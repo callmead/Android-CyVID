@@ -9,15 +9,16 @@
 ## Overview
 ### Description
 [Description of your app]
+The app is intended to provide information about the computer's at risk within a given network and help cyber defenders decide which parts have more vulnerabilities and can be secured. 
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
+- **Category:** Cybersecurity
+- **Mobile:** This app can be developed as both as mobile app and a web app. 
+- **Story:** Analyzes a user's network nodes for vulnerabilities and displays the collected analysis. 
+- **Market:** It's an open-source app available for any cyber defenders. 
+- **Habit:** This can be used periodically to gather current trends. 
+- **Scope:** First we start by providing network analysis and later can be used for preedicting future risks. 
 
 ## Product Spec
 
@@ -25,52 +26,44 @@
 
 **Required Must-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* User logs in to access their network information
+* User has an analysis screen that shows the current state of their network
+* Data entry screens required for adding network data
 
 **Optional Nice-to-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* Push notifications to users for network events
+* Customizable reports
 
 ### 2. Screen Archetypes
 
-* [list first screen here]
-   * [list associated required story here]
-   * ...
-* [list second screen here]
-   * [list associated required story here]
-   * ...
+* Login 
+* Dashboard 
+* Add Node Screen
+* Add Products to Node Screen
+* Analysis Screen
+* User Management Screen
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+* Dashboard
+* Analysis
 
 **Flow Navigation** (Screen to Screen)
-
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
+* Forced Log-in -> Account creation if no log in is available
+* Dashboard -> Leads to Add Node/Product/User
+* Add Node/Product/User -> Text field to be add/update/delete data. 
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
-
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
+<img src="https://i.imgur.com/9CrjH1K.jpg" width=800><br>
 
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
 [Add table of models]
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
