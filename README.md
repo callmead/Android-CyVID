@@ -25,8 +25,9 @@ The app is intended to provide information about the computer's at risk within a
 **Required Must-have Stories**
 
 * User logs in to access their network information
-* User has an analysis screen that shows the current state of their network
+* User access their dashboard to add nodes
 * Data entry screens required for adding network data
+* User has an analysis screen that shows the current state of their network
 
 **Optional Nice-to-have Stories**
 
