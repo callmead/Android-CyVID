@@ -8,11 +8,9 @@
 
 ## Overview
 ### Description
-[Description of your app]
 The app is intended to provide information about the computer's at risk within a given network and help cyber defenders decide which parts have more vulnerabilities and can be secured. 
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
 - **Category:** Cybersecurity
 - **Mobile:** This app can be developed as both as mobile app and a web app. 
 - **Story:** Analyzes a user's network nodes for vulnerabilities and displays the collected analysis. 
@@ -62,7 +60,13 @@ The app is intended to provide information about the computer's at risk within a
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+
+#### Nodes
+
+| Property      | Type       | Description |
+| ------------- | -----------|-----------  |  
+| Content Cell  |            |             |
+| Content Cell  |            |             |
 
 ### Networking
 - [Add list of network requests by screen ]
