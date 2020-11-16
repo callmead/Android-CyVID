@@ -58,15 +58,18 @@ The app is intended to provide information about the computer's at risk within a
 <img src="https://github.com/jannyr08/CyVID/blob/main/IMG_5373.jpg" width=800><br>
 
 ## Schema 
-[This section will be completed in Unit 9]
+
 ### Models
 
-#### Nodes
+#### Node
 
 | Property      | Type       | Description |
 | ------------- | -----------|-----------  |  
-| Content Cell  |            |             |
-| Content Cell  |            |             |
+|  objectId             |            |             |
+|               |            |             |
+
+#### User
+
 
 ### Networking
 - [Add list of network requests by screen ]
