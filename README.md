@@ -63,9 +63,13 @@ The app is intended to provide information about the computer's at risk within a
 
 #### Node
 
-| Property  | Type      |                 Description |
-| ----------| ----------|                -----------  |  
-| objectId  | String    | unique id for the user post |
+| Property  | Type      |                 Description   |
+| ----------| ----------|                -----------    |  
+| objectId  | String    | unique id for the node        |
+| nodeName  | String    | name of node                  |
+| node type | String    | node type (correspoding to DB)|
+| OS        | String    | operating system of node      |
+| description | String  | description of node           |
 
 #### User
 
