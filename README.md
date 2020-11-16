@@ -63,10 +63,9 @@ The app is intended to provide information about the computer's at risk within a
 
 #### Node
 
-| Property      | Type       | Description |
-| ------------- | -----------|-----------  |  
-|  objectId             |            |             |
-|               |            |             |
+| Property  | Type      |                 Description |
+| ----------| ----------|                -----------  |  
+| objectId  | String    | unique id for the user post |
 
 #### User
 
