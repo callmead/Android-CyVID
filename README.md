@@ -66,11 +66,29 @@ The app is intended to provide information about the computer's at risk within a
 
 | Property    | Type      |                 Description   |
 | ------------| ----------|                -----------    |  
-| HostName    | String    | unique id for the node        |
-| HostIP      | String    | name of node                  |
-| HostGateway | String    | node type (correspoding to DB)|
+| \_id        | String    | unique id for the node        |
+| HostName    | String    | Host name for the node        |
+| HostIP      | String    | IP Address of the node        |
+| HostGateway | String    | IP Gateway of teh node        |
 | HostOS      | String    | operating system of node      |
-| description | String    | description of node           |
+| HostApps    | List      | List of installed products    |
+
+#### Product_CVE_Map
+
+| Property    | Type      |                 Description   |
+| ------------| ----------|                -----------    |  
+| \_id        | String    | unique id                     |
+| ProductName | String    | product name                  |
+| CVE_ID      | String    | vulnerability identification# |
+
+#### Product_CVE_Map
+
+| Property    | Type      |                 Description   |
+| ------------| ----------|                -----------    |  
+| \_id        | String    | unique id                     |
+| ProductName | String    | product name                  |
+| CVE_ID      | String    | vulnerability identification# |
+
 
 
 ### Networking
