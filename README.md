@@ -72,8 +72,6 @@ The app is intended to provide information about the computer's at risk within a
 | OS        | String    | operating system of node      |
 | description | String  | description of node           |
 
-#### User
-
 
 ### Networking
 - [Add list of network requests by screen ]
