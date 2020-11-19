@@ -56,7 +56,7 @@ The app is intended to provide information about the computer's at risk within a
 * Add Node/Product/User -> Text field to be add/update/delete data. 
 
 ## Wireframes
-<img src="https://github.com/jannyr08/CyVID/blob/main/IMG_5373.jpg" width=800><br>
+<img src="https://github.com/jannyr08/CyVID/blob/main/images/wireframe.jpg" width=800><br>
 
 ## Schema 
 
