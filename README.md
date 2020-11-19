@@ -64,13 +64,13 @@ The app is intended to provide information about the computer's at risk within a
 
 #### Node
 
-| Property  | Type      |                 Description   |
-| ----------| ----------|                -----------    |  
-| objectId  | String    | unique id for the node        |
-| nodeName  | String    | name of node                  |
-| node type | String    | node type (correspoding to DB)|
-| OS        | String    | operating system of node      |
-| description | String  | description of node           |
+| Property    | Type      |                 Description   |
+| ------------| ----------|                -----------    |  
+| HostName    | String    | unique id for the node        |
+| HostIP      | String    | name of node                  |
+| HostGateway | String    | node type (correspoding to DB)|
+| HostOS      | String    | operating system of node      |
+| description | String    | description of node           |
 
 
 ### Networking
