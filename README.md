@@ -71,7 +71,30 @@ The app is intended to provide information about the computer's at risk within a
 | HostIP      | String    | IP Address of the node        |
 | HostGateway | String    | IP Gateway of teh node        |
 | HostOS      | String    | operating system of node      |
-| HostApps    | List      | List of installed products    |
+
+#### Product
+
+| Property    | Type      |                 Description   |
+| ------------| ----------|                -----------    |  
+| \_id        | String    | unique id for the product     |
+| ProdDesc    | String    | name and version of product   |
+
+#### Node_Product_Map
+
+| Property    | Type      |                 Description   |
+| ------------| ----------|                -----------    |  
+| \_id        | String    | unique id                     |
+| ProductId   | String    | unique id of the product      |
+| NodeId      | String    | unique id of the node         |
+
+#### Product_CVE_Map
+
+| Property    | Type      |                 Description   |
+| ------------| ----------|                -----------    |  
+| \_id        | String    | unique id                     |
+| ProductId   | String    | product name                  |
+| CVE_ID      | String    | vulnerability identification# |
+| CWE_ID      | String    | vulnerability Classification# |
 
 #### Product_CVE_Map
 
@@ -81,15 +104,63 @@ The app is intended to provide information about the computer's at risk within a
 | ProductName | String    | product name                  |
 | CVE_ID      | String    | vulnerability identification# |
 
-#### Product_CVE_Map
+#### CWE_Master
 
 | Property    | Type      |                 Description   |
 | ------------| ----------|                -----------    |  
-| \_id        | String    | unique id                     |
-| ProductName | String    | product name                  |
-| CVE_ID      | String    | vulnerability identification# |
+| \_id        | String    | unique id for CWE             |
+| CWEName     | String    | CWE name                      |
+| Parents     | List      | List of parents for the CWE   |
+| Children    | List      | List of children for the CWE  |
 
+#### CWE_Detailed
 
+| Property                  | Type        | Description   |
+| ------------              | ----------  | -----------   |  
+| \_id                      | String      | unique id     |
+| CWEName                   | String      | CWE name      |
+| weakness_abstraction      | String      | CWE Details   |
+| Status                    | String      | CWE Details   |
+| description               | String      | CWE Details   |
+| extended_description      | String      | CWE Details   |
+| related_weaknesses        | String      | CWE Details   |
+| weakness_ordinalities     | String      | CWE Details   |
+| applicable_platforms      | String      | CWE Details   |
+| alternate_terms           | String      | CWE Details   |
+| modes_of_introduction     | String      | CWE Details   |
+| exploitation_factors      | String      | CWE Details   |
+| likelihood_of_exploit     | String      | CWE Details   |
+| common_consequences       | String      | CWE Details   |
+| detection_methods         | String      | CWE Details   |
+| potential_mitigations     | String      | CWE Details   |
+| observed_examples         | String      | CWE Details   |
+| functional_areas          | String      | CWE Details   |
+| affected_resources        | String      | CWE Details   |
+| taxonomy_mappings         | String      | CWE Details   |
+| related_attack_patterns   | String      | CWE Details   |
+| notes                     | String      | CWE Details   |
+
+#### CyVID_Dataset
+
+| Property                  | Type        | Description                                 |
+| ------------              | ----------  | -----------                                 |    
+| \_id                      | String      | unique id                                   |
+| lang                      | String      | Language                                    |
+| CWE_ID                    | String      | unique id                                   |
+| CWE_Description           | String      | Description                                 |
+| CWE_Platform              | String      | Platform                                    |
+| CWE_Af_Res                | String      | Affected Resources                          |
+| Severity                  | String      | Vulnerability Severity                      |
+| CVSS_V2                   | String      | CVSS V2 Score                               |
+| CVSS_V3                   | String      | CVSS V3 Score                               |
+| Vul_Access_Vector         | String      | Vulnerability Access Vector                 |
+| user_int_req              | Boolean     | User Interaction Required                   |
+| OS                        | List        | Operating systems affected by Vulnerability |
+| SW                        | String      | Softwares affected by Vulnerability         |
+| published_date            | Date        | Date of publication                         |
+| modified_date             | Date        | Modification Date                           |
+| description               | String      | CWE Details                                 |
+| url_and_tags              | List        | References                                  |
 
 ### Networking
 - [Add list of network requests by screen ]
