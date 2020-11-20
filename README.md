@@ -96,14 +96,6 @@ The app is intended to provide information about the computer's at risk within a
 | CVE_ID      | String    | vulnerability identification# |
 | CWE_ID      | String    | vulnerability Classification# |
 
-#### Product_CVE_Map
-
-| Property    | Type      |                 Description   |
-| ------------| ----------|                -----------    |  
-| \_id        | String    | unique id                     |
-| ProductName | String    | product name                  |
-| CVE_ID      | String    | vulnerability identification# |
-
 #### CWE_Master
 
 | Property    | Type      |                 Description   |
@@ -163,6 +155,37 @@ The app is intended to provide information about the computer's at risk within a
 | url_and_tags              | List        | References                                  |
 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+#### Node
+- (Read/GET) Query all nodes
+- (Add/Node) Add a new node profile
+- (Delete) Delete an existing node profile
+- (Update/PUT) Update a node profile
+
+#### Product
+- (Read/GET) Query all nodes
+- (Add/Node) Add a new product
+- (Delete) Delete an existing product
+- (Update/PUT) Update a product details
+
+#### Node_Product_Map
+- (Read/GET) Query node/product mappings
+- (Add/Node) Add a new node/product mapping
+- (Delete) Delete an existing node/product mapping
+- (Update/PUT) Update a node/product mapping
+
+
+#### Product_CVE_Map
+- (Read/GET) Query product/CVE mappings
+- (Add/Node) Add a new product/CVE mapping
+- (Delete) Delete an existing product/CVE mapping
+- (Update/PUT) Update a product/CVE mapping
+
+#### CWE_Master
+- (Read/GET) Query CWE records
+
+#### CWE_Detailed
+- (Read/GET) Query CWE details
+
+#### CyVID_Dataset
+- (Read/GET) Query CyVID dataset for vulnerability details.
