@@ -189,3 +189,11 @@ The app is intended to provide information about the computer's at risk within a
 
 #### CyVID_Dataset
 - (Read/GET) Query CyVID dataset for vulnerability details.
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='https://github.com/jannyr08/CyVID/blob/main/cyVID-s1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
