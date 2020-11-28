@@ -24,9 +24,9 @@ The app is intended to provide information about the computer's at risk within a
 
 **Required Must-have Stories**
 
-* User logs in to access their network information
-* User access their dashboard to add nodes
-* Data entry screens required for adding network data
+* [x] User logs in to access their network information
+* [x] User access their dashboard to add nodes
+* [x] Data entry screens required for adding network data
 * User has an analysis screen that shows the current state of their network
 
 **Optional Nice-to-have Stories**
@@ -36,9 +36,9 @@ The app is intended to provide information about the computer's at risk within a
 
 ### 2. Screen Archetypes
 
-* Login 
-* Dashboard 
-* Add Node Screen
+* [x] Login 
+* [x] Dashboard 
+* [x] Add Node Screen
 * Add Products to Node Screen
 * Analysis Screen
 * User Management Screen
