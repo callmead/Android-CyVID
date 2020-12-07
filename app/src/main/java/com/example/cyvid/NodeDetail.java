@@ -89,6 +89,4 @@ public class NodeDetail extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
 }

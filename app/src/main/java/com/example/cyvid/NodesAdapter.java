@@ -40,7 +40,6 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder>{
             @Override
             public void onItemClickListener(View v, int position) {
 
-
                 String gNodeName = nodeList.get(position).getName();
                 String gDescription = nodeList.get(position).getDescription();
 

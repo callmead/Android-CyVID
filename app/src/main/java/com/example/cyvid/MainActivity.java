@@ -39,12 +39,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
 
-                if (fragment != null) {
-                    fragmentManager
-                            .beginTransaction()
-                            .replace(R.id.flContainer, fragment)
-                            .commit();
-                }
+                fragmentManager
+                        .beginTransaction()
+                        .replace(R.id.flContainer, fragment)
+                        .commit();
 
                 return true;
             }

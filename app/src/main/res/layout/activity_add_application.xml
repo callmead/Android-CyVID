@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="20dp"
             android:ems="10"
             android:hint="Application Name"
             android:inputType="textPersonName"
@@ -25,8 +25,25 @@
             android:textColorHint="#D73E3E3E" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_appVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="40dp"
+            android:ems="10"
+            android:hint="Version"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColorHint="#D73E3E3E" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
-        android:id="@+id/btnSaveApp"
+        android:id="@+id/btn_saveApp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

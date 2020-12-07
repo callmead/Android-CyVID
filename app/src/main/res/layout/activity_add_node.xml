@@ -13,45 +13,12 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/et_nodeName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
-            android:hint="Node Name"
-            android:inputType="textPersonName"
-            android:padding="10dp"
-            android:textColorHint="#D73E3E3E" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/editTextTextPersonName2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="27dp"
-            android:ems="10"
-            android:hint="Node Type"
-            android:inputType="textPersonName"
-            android:padding="10dp"
-            android:textColorHint="#D73E3E3E" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/et_hostName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:ems="10"
-            android:hint="Operating System"
+            android:hint="Host Name"
             android:inputType="textPersonName"
             android:padding="10dp"
             android:textColorHint="#D73E3E3E" />
@@ -61,22 +28,55 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/et_hostIP"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="Host IP"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColorHint="#D73E3E3E" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_hostGateway"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="Host Gateway"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColorHint="#D73E3E3E" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_hostOS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:ems="10"
-            android:hint="Description"
+            android:hint="Host OS"
             android:inputType="textPersonName"
             android:padding="10dp"
-            android:textColorHint="#D73E3E3E"
-          />
+            android:textColorHint="#D73E3E3E" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <Button
-        android:id="@+id/btnSaveNode"
+        android:id="@+id/btn_saveNode"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -87,7 +87,7 @@
         android:textColor="#FFFFFF" />
 
     <Button
-        android:id="@+id/btnCancelNode"
+        android:id="@+id/btn_cancelNode"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
