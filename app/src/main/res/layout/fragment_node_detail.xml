@@ -6,29 +6,62 @@
     tools:context=".node_fragments.NodeDetailFragment">
 
     <TextView
-        android:id="@+id/tvNodeNameDetail"
+        android:id="@+id/tv_hostName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="30dp"
         android:gravity="center_horizontal"
-        android:text="Node Name"
+        android:text="Host Name"
         android:textColor="@color/cardview_dark_background"
         android:textSize="23sp"
         android:textStyle="bold"
         tools:ignore="PrivateResource" />
 
     <TextView
-        android:id="@+id/tvDescriptionDetail"
+        android:id="@+id/tv_hostOS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvNodeNameDetail"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv_hostGateway"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="30dp"
         android:gravity="center_horizontal"
-        android:text="Description"
-        android:textColor="@color/lightGray"
-        android:textSize="16sp" />
+        android:text="Host OS"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        tools:ignore="PrivateResource" />
+
+    <TextView
+        android:id="@+id/tv_hostGateway"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_hostIP"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="Host Gateway"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        tools:ignore="PrivateResource" />
+
+    <TextView
+        android:id="@+id/tv_hostIP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_hostName"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="Host IP"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        tools:ignore="PrivateResource" />
 
 </RelativeLayout>

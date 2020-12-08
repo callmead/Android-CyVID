@@ -60,8 +60,9 @@ public class JsonTask extends AsyncTask<String, String, String> {
     }
 
     @Override
-    protected void onPostExecute(String result) {
+    public void onPostExecute(String result) {
         super.onPostExecute(result);
-        //lblData.setText(result);
+
+        // NodesFragment.tvTest.setText(this.data);
     }
 }

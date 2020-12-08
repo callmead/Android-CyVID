@@ -32,7 +32,7 @@ public class NodeDetailFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private TextView tvNodeName, tvNodeDetail;
+    TextView tvHostName, tvHostIP, tvHostGateway, tvHostOS;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -95,16 +95,23 @@ public class NodeDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        tvNodeName = view.findViewById(R.id.tvNodeNameDetail);
-        tvNodeDetail = view.findViewById(R.id.tvDescriptionDetail);
+        tvHostName = view.findViewById(R.id.tv_hostName);
+        tvHostIP = view.findViewById(R.id.tv_hostIP);
+        tvHostGateway = view.findViewById(R.id.tv_hostGateway);
+        tvHostOS = view.findViewById(R.id.tv_hostOS);
 
         // get data from intent
         Intent intent = Objects.requireNonNull(getActivity()).getIntent();
 
-        String nodeName = intent.getStringExtra("iTitle");
-        String nodeDescription = intent.getStringExtra("iDescription");
+        String hostName = intent.getStringExtra("hostName");
+        String hostIP = intent.getStringExtra("hostIP");
+        String hostGateway = intent.getStringExtra("hostGateway");
+        String hostOS = intent.getStringExtra("hostOS");
 
-        tvNodeName.setText(nodeName);
-        tvNodeDetail.setText(nodeDescription);
+        tvHostName.setText(hostName);
+        tvHostIP.setText(hostIP);
+        tvHostGateway.setText(hostGateway);
+        tvHostOS.setText(hostOS);
+
     }
 }

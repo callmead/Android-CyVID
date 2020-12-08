@@ -15,15 +15,26 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.cyvid.AddNode;
-import com.example.cyvid.Node;
+import com.example.cyvid.model.Node;
 import com.example.cyvid.NodesAdapter;
 import com.example.cyvid.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class NodesFragment extends Fragment {
@@ -40,6 +51,9 @@ public class NodesFragment extends Fragment {
     public static final String TAG = "NodesFragment";
     private RecyclerView rvNodes;
     private NodesAdapter adapter;
+    protected List<Node> allNodes;
+    private RequestQueue requestQueue;
+
 
     public NodesFragment() {
         // Required empty public constructor
@@ -99,40 +113,64 @@ public class NodesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         rvNodes = view.findViewById(R.id.rvNodes);
+        allNodes = new ArrayList<>();
 
-        adapter = new NodesAdapter(getContext(), getList());
+        adapter = new NodesAdapter(getContext(), allNodes);
 
         rvNodes.setAdapter(adapter);
         rvNodes.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        requestQueue = Volley.newRequestQueue(Objects.requireNonNull(getContext()));
+        parseJson();
+
     }
 
-    public List<Node> getList() {
+    private void parseJson() {
+        String url = "http://70.120.225.91:5000/CyVID_functions/query/test_db/" + "{\"_id\":\"14e87118e4004f75821c9d78d23e7710\"}";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray jsonArray = response.getJSONArray("doc(s)");
 
-        List<Node> nodes = new ArrayList<>();
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject doc = jsonArray.getJSONObject(i);
 
-        Node node = new Node();
-        node.setName("First Node");
-        node.setDescription("My first node");
-        nodes.add(node);
+                                String hostName = doc.getString("HostName");
+                                String hostIP = doc.getString("HostIP");
+                                String hostGateway = doc.getString("HostGateway");
+                                String hostOS = doc.getString("HostOS");
+                                String id = doc.getString("_id");
+                                String rev = doc.getString("_rev");
 
-        node = new Node();
-        node.setName("Second Node");
-        node.setDescription("My second node");
-        nodes.add(node);
+                                Node node = new Node();
+                                node.setHostName(hostName);
+                                node.setHostIP(hostIP);
+                                node.setHostGateway(hostGateway);
+                                node.setHostOS(hostOS);
+                                node.setId(id);
+                                node.setRev(rev);
 
-        node = new Node();
-        node.setName("Third Node");
-        node.setDescription("My third node");
-        nodes.add(node);
+                                allNodes.add(node);
+                            }
 
-        node = new Node();
-        node.setName("Fourth Node");
-        node.setDescription("My last node");
-        nodes.add(node);
+                            adapter = new NodesAdapter(getContext(), allNodes);
+                            rvNodes.setAdapter(adapter);
 
-        return nodes;
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        requestQueue.add(request);
+
     }
-
-
 
 }

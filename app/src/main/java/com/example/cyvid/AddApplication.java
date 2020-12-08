@@ -43,8 +43,9 @@ public class AddApplication extends AppCompatActivity {
                 });
 
                 final String doc = "{\"AppName\":\"" + appName.getText().toString() + "\", \"AppVersion\": \""+ appVersion.getText().toString() +"\"}";
-                new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/add/test_db/" + doc);
-                finish();
+//                new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/add/test_db/" + doc);
+//                finish();
+
             }
         });
     }

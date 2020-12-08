@@ -38,15 +38,17 @@ public class NodeDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_node_detail);
 
+
         ActionBar actionBar = getSupportActionBar();
 
         // get data from intent
         Intent intent = getIntent();
 
-        String nodeName = intent.getStringExtra("iTitle");
+        // String nodeName = intent.getStringExtra("iTitle");
 
         assert actionBar != null;
-        actionBar.setTitle(nodeName);
+        actionBar.setTitle("Node Details");
+
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         navigationView = findViewById(R.id.node_detail_bottom_nav);

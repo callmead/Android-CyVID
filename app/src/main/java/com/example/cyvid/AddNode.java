@@ -41,7 +41,6 @@ public class AddNode extends AppCompatActivity {
         hostGateway = findViewById(R.id.et_hostGateway);
         hostOS = findViewById(R.id.et_hostOS);
 
-
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,8 +65,5 @@ public class AddNode extends AppCompatActivity {
             }
         });
     }
-
-
-
 
 }
