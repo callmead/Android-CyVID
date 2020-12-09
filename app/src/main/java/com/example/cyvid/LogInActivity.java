@@ -10,9 +10,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.cyvid.main_fragments.NodesFragment;
+import com.example.cyvid.model.Node;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Objects;
+
+import static com.android.volley.toolbox.Volley.newRequestQueue;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -21,6 +37,7 @@ public class LogInActivity extends AppCompatActivity {
     private EditText etPassword;
     private Button btnLogin;
     private Button btnSignup;
+    private RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +51,16 @@ public class LogInActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(TAG, "onClick login button");
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
-                loginUser(username, password);
+
+               if (username.isEmpty()) {
+                   Toast.makeText(LogInActivity.this, "Username cannot be empty.", Toast.LENGTH_SHORT).show();
+               } else if (password.isEmpty()) {
+                   Toast.makeText(LogInActivity.this, "Password cannot be empty.", Toast.LENGTH_SHORT).show();
+               } else {
+                   loginUser(username, password);
+               }
             }
         });
 
@@ -45,22 +68,76 @@ public class LogInActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(TAG, "onClick signup button");
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                signUp(username, password);
+                goMainActivity();
             }
+//            @Override
+//            public void onClick(View v) {
+//                Log.i(TAG, "onClick signup button");
+//                String username = etUsername.getText().toString();
+//                String password = etPassword.getText().toString();
+//
+//                if (username.isEmpty()) {
+//                    Toast.makeText(LogInActivity.this, "Username cannot be empty.", Toast.LENGTH_SHORT).show();
+//                } else if (password.isEmpty()) {
+//                    Toast.makeText(LogInActivity.this, "Password cannot be empty.", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    signUp(username, password);
+//                }
+//            }
+
         });
     }
 
     private void signUp(String username, String password) {
+
+        final String doc = "{\"user\":\"" + username + "\", \"pass\": \""+ password +"\"}";
+        new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/add/cyvid_users/" + doc);
+
+        String test = "http://70.120.225.91:5000/CyVID_functions/add/cyvid_users/" + doc;
+        Log.i("LogIn", test);
         goMainActivity();
-        Toast.makeText(LogInActivity.this, "Sign up successful!", Toast.LENGTH_SHORT).show();
+
     }
 
     private void loginUser(String username, String password) {
-        goMainActivity();
-        Toast.makeText(LogInActivity.this, "Log in Successful!", Toast.LENGTH_SHORT).show();
+
+        requestQueue = Volley.newRequestQueue(Objects.requireNonNull(getApplicationContext()));
+
+        final String doc = "{\"user\":\"" + username + "\", \"pass\":\""+ password +"\"}";
+        Log.i("LogIn", doc);
+
+        String url = "http://70.120.225.91:5000/Authenticate/" + doc;
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+
+                            String message = response.getString("message");
+                            Log.i("LogIn", message);
+
+                            if (message.equalsIgnoreCase("invalid user")) {
+                                Toast.makeText(LogInActivity.this, "Invalid username.", Toast.LENGTH_SHORT).show();
+                            } else if (message.equalsIgnoreCase("invalid password")) {
+                                Toast.makeText(LogInActivity.this, "Invalid password.", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(LogInActivity.this, "Log in Successful!", Toast.LENGTH_SHORT).show();
+                                goMainActivity();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        requestQueue.add(request);
+
     }
 
     private void goMainActivity() {

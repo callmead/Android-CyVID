@@ -5,18 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.example.cyvid.main_fragments.NodesFragment;
 
 public class AddNode extends AppCompatActivity {
 
@@ -31,6 +25,8 @@ public class AddNode extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         actionBar.setTitle("Add Node");
 
         btnCancel = findViewById(R.id.btn_cancelNode);
@@ -62,11 +58,22 @@ public class AddNode extends AppCompatActivity {
                 DataBase db = new DataBase();
 
                 final String doc = "{\"HostName\":\"" + hostName.getText().toString() + "\", \"HostIP\": \""+ hostIP.getText().toString() +"\", \"HostGateway\": \""+ hostGateway.getText().toString() +"\", \"HostOS\": \""+ hostOS.getText().toString() +"\"}";
-                new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/add/" + db.db + "/" + doc);
-                finish();
+                new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/add/test_db2/" + doc);
+                // .NotifyDataSetChanged();
+                NodesFragment.updateList();
 
+                finish();
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

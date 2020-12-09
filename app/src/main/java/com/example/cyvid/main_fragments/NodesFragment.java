@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -51,7 +52,7 @@ public class NodesFragment extends Fragment {
 
     public static final String TAG = "NodesFragment";
     private RecyclerView rvNodes;
-    private NodesAdapter adapter;
+    private static NodesAdapter adapter;
     protected List<Node> allNodes;
     private RequestQueue requestQueue;
 
@@ -121,14 +122,20 @@ public class NodesFragment extends Fragment {
         rvNodes.setAdapter(adapter);
         rvNodes.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        adapter.notifyDataSetChanged();
+
         requestQueue = Volley.newRequestQueue(Objects.requireNonNull(getContext()));
         parseJson();
+    }
+
+    public static void updateList() {
+        adapter.notifyDataSetChanged();
     }
 
     private void parseJson() {
         DataBase db = new DataBase();
 
-        String url = "http://70.120.225.91:5000/CyVID_functions/query/" + db.db + "/{\"all\":\"docs\"}";
+        String url = "http://70.120.225.91:5000/CyVID_functions/query/test_db2" + "/{\"all\":\"docs\"}";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -155,10 +162,8 @@ public class NodesFragment extends Fragment {
                                 node.setRev(rev);
 
                                 allNodes.add(node);
+                                adapter.notifyDataSetChanged();
                             }
-
-                            adapter = new NodesAdapter(getContext(), allNodes);
-                            rvNodes.setAdapter(adapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

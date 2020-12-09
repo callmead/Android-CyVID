@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -82,11 +83,30 @@ public class NodeDetail extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_delete_node, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
             return true;
+        } else if (item.getItemId() == R.id.action_delete_node) {
+            DataBase db = new DataBase();
+
+            SharedPreferences bb = getSharedPreferences("sharedPrefs", 0);
+
+            String id = bb.getString("id", "");
+            String rev = bb.getString("rev", "");
+
+            new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/delete/" + db.db + "/" + "{\"_id\":\"" + id + "\", \"_rev\": \"" + rev + "\"}");
+            NodesFragment.updateList();
+            finish();
         }
+
         return super.onOptionsItemSelected(item);
     }
 

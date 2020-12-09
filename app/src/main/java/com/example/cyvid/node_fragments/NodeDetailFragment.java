@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cyvid.AddNode;
+import com.example.cyvid.EditActivity;
+import com.example.cyvid.NodeDetail;
 import com.example.cyvid.R;
 
 import java.util.Objects;
@@ -72,17 +74,7 @@ public class NodeDetailFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_edit_node) {
-            Toast.makeText(getContext(), "Edit Node", Toast.LENGTH_SHORT).show();
-//            Intent intent = new Intent(getActivity(), EditNode.class);
-//            startActivity(intent);
-        }
 
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -112,5 +104,19 @@ public class NodeDetailFragment extends Fragment {
         tvHostIP.setText(hostIP);
         tvHostGateway.setText(hostGateway);
         tvHostOS.setText(hostOS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_edit_node) {
+
+            Intent intent = new Intent(getActivity(), EditActivity.class);
+            startActivity(intent);
+
+            // http://70.120.225.91:5000/CyVID_functions/update/test_db/{"_id":"11", "data":"new value", "_rev": "3-cf6bfa49a8a8665f7e90580b7dd85cba"}
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

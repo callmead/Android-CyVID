@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/et_hostName"
+            android:id="@+id/et_editHostName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/et_hostIP"
+            android:id="@+id/et_editHostIP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/et_hostGateway"
+            android:id="@+id/et_editHostGateway"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/et_hostOS"
+            android:id="@+id/et_editHostOS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
@@ -83,11 +83,11 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="#2A7A47"
-        android:text="Add"
+        android:text="Save"
         android:textColor="#FFFFFF" />
 
     <Button
-        android:id="@+id/btn_cancelNode"
+        android:id="@+id/btn_cancelNodeEdit"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

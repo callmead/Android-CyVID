@@ -22,7 +22,6 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder>{
     Context context;
     List<Node> nodeList;
 
-
     public NodesAdapter(Context c, List<Node> nodeList) {
         this.context = c;
         this.nodeList = nodeList;
@@ -61,20 +60,27 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder>{
 
                 String id = nodeList.get(position).getId();
                 String rev = nodeList.get(position).getRev();
-                saveData(id, rev);
+
+                saveData(id, rev, hostName, hostIP, hostGateway, hostOS);
 
                 context.startActivity(intent);
             }
 
         });
+
+
     }
 
-    private void saveData(String id, String rev) {
+    private void saveData(String id, String rev, String hostName, String hostIP, String hostGateway, String hostOS) {
         SharedPreferences prefs = context.getSharedPreferences("sharedPrefs", MODE_PRIVATE);
         SharedPreferences.Editor edit = prefs.edit();
 
         edit.putString("id", id);
         edit.putString("rev", rev);
+        edit.putString("hostName", hostName);
+        edit.putString("hostIP", hostIP);
+        edit.putString("hostGateway", hostGateway);
+        edit.putString("hostOS", hostOS);
 
         edit.apply();
     }
@@ -82,6 +88,18 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder>{
     @Override
     public int getItemCount() {
         return nodeList.size();
+    }
+
+    // Clean all elements of the recycler
+    public void clear() {
+        nodeList.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<Node> list) {
+        nodeList.addAll(list);
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
