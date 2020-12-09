@@ -1,67 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".node_fragments.NodeDetailFragment">
 
-    <TextView
-        android:id="@+id/tv_hostName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="Host Name"
-        android:textColor="@color/cardview_dark_background"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        tools:ignore="PrivateResource" />
+    <androidx.cardview.widget.CardView
 
-    <TextView
-        android:id="@+id/tv_hostOS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_hostGateway"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="Host OS"
-        android:textColor="@color/cardview_dark_background"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        tools:ignore="PrivateResource" />
+        android:id="@+id/cvNodeCard"
+        android:orientation="vertical"
+        android:layout_marginBottom="5dp"
+        android:padding="16dp"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/tv_hostGateway"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_hostIP"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="Host Gateway"
-        android:textColor="@color/cardview_dark_background"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        tools:ignore="PrivateResource" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tv_hostIP"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_hostName"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:text="Host IP"
-        android:textColor="@color/cardview_dark_background"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        tools:ignore="PrivateResource" />
+            <TextView
+                android:id="@+id/tvNameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="17dp"
+                android:text="Host Name:"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_hostName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="17dp"
+                android:textSize="19sp"
+                android:text="TestName"
+                android:textColor="@color/cardview_dark_background"
+                tools:ignore="PrivateResource" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvNameTitle"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="35dp"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="Host IP:" />
+
+
+            <TextView
+                android:id="@+id/tv_hostIP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_hostName"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="35dp"
+                android:textSize="19sp"
+                android:textColor="@color/cardview_dark_background"
+                android:text="Test IP"
+                tools:ignore="PrivateResource" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="35dp"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="Host Gateway:" />
+
+            <TextView
+                android:id="@+id/tv_hostGateway"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_hostIP"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="35dp"
+                android:textSize="19sp"
+                android:layout_toEndOf="@+id/textView4"
+                android:textColor="@color/cardview_dark_background"
+                android:text="Test Gateway"
+                tools:ignore="PrivateResource" />
+
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView4"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="35dp"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:text="Host OS:" />
+
+            <TextView
+                android:id="@+id/tv_hostOS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_hostGateway"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="17dp"
+                android:textSize="19sp"
+                android:textColor="@color/cardview_dark_background"
+                android:text="Test OS"
+                tools:ignore="PrivateResource" />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cyvid.AddNode;
+import com.example.cyvid.DataBase;
 import com.example.cyvid.model.Node;
 import com.example.cyvid.NodesAdapter;
 import com.example.cyvid.R;
@@ -122,11 +123,12 @@ public class NodesFragment extends Fragment {
 
         requestQueue = Volley.newRequestQueue(Objects.requireNonNull(getContext()));
         parseJson();
-
     }
 
     private void parseJson() {
-        String url = "http://70.120.225.91:5000/CyVID_functions/query/test_db/" + "{\"_id\":\"14e87118e4004f75821c9d78d23e7710\"}";
+        DataBase db = new DataBase();
+
+        String url = "http://70.120.225.91:5000/CyVID_functions/query/" + db.db + "/{\"all\":\"docs\"}";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override

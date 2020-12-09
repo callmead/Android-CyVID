@@ -2,6 +2,7 @@ package com.example.cyvid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +15,13 @@ import com.example.cyvid.model.Node;
 
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder>{
 
     Context context;
     List<Node> nodeList;
+
 
     public NodesAdapter(Context c, List<Node> nodeList) {
         this.context = c;
@@ -48,21 +52,31 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder>{
                 String hostGateway = nodeList.get(position).getHostGateway();
                 String hostOS = nodeList.get(position).getHostOS();
 
-                String id = nodeList.get(position).getId();
-                String rev = nodeList.get(position).getRev();
-
                 Intent intent = new Intent(context, NodeDetail.class);
+
                 intent.putExtra("hostName", hostName);
                 intent.putExtra("hostIP", hostIP);
                 intent.putExtra("hostGateway", hostGateway);
                 intent.putExtra("hostOS", hostOS);
 
-                intent.putExtra("iID", id);
-                intent.putExtra("iRev", rev);
+                String id = nodeList.get(position).getId();
+                String rev = nodeList.get(position).getRev();
+                saveData(id, rev);
 
                 context.startActivity(intent);
             }
+
         });
+    }
+
+    private void saveData(String id, String rev) {
+        SharedPreferences prefs = context.getSharedPreferences("sharedPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor edit = prefs.edit();
+
+        edit.putString("id", id);
+        edit.putString("rev", rev);
+
+        edit.apply();
     }
 
     @Override

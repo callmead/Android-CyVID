@@ -59,9 +59,12 @@ public class AddNode extends AppCompatActivity {
                     }
                 });
 
+                DataBase db = new DataBase();
+
                 final String doc = "{\"HostName\":\"" + hostName.getText().toString() + "\", \"HostIP\": \""+ hostIP.getText().toString() +"\", \"HostGateway\": \""+ hostGateway.getText().toString() +"\", \"HostOS\": \""+ hostOS.getText().toString() +"\"}";
-                new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/add/test_db/" + doc);
+                new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/add/" + db.db + "/" + doc);
                 finish();
+
             }
         });
     }

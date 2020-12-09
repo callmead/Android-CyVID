@@ -43,11 +43,10 @@ public class NodeDetail extends AppCompatActivity {
 
         // get data from intent
         Intent intent = getIntent();
-
-        // String nodeName = intent.getStringExtra("iTitle");
+        String name = intent.getStringExtra("hostName");
 
         assert actionBar != null;
-        actionBar.setTitle("Node Details");
+        actionBar.setTitle(name);
 
         actionBar.setDisplayHomeAsUpEnabled(true);
 

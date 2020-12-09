@@ -112,6 +112,5 @@ public class NodeDetailFragment extends Fragment {
         tvHostIP.setText(hostIP);
         tvHostGateway.setText(hostGateway);
         tvHostOS.setText(hostOS);
-
     }
 }
