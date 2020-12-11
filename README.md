@@ -32,6 +32,7 @@ The app is intended to provide information about the computer's at risk within a
 **Optional Nice-to-have Stories**
 
 * Push notifications to users for network events
+* Graphs
 * Customizable reports
 
 ### 2. Screen Archetypes
@@ -59,60 +60,41 @@ The app is intended to provide information about the computer's at risk within a
 <img src="https://github.com/jannyr08/CyVID/blob/main/images/wireframe.jpg" width=800><br>
 
 ## Schema 
+For the mobile app to interact with the backend database, we selected CouchDB (nosql) database because it is a very flexible and scaleable document store. The database is running on our own server and the database structure is as follows.
 
 ### Models
 
-#### Node
+#### CyVID_Nodes
 
 | Property    | Type      |                 Description   |
 | ------------| ----------|                -----------    |  
 | \_id        | String    | unique id for the node        |
+| \_rev       | String    | revision # of the document    |
 | HostName    | String    | Host name for the node        |
 | HostIP      | String    | IP Address of the node        |
 | HostGateway | String    | IP Gateway of teh node        |
 | HostOS      | String    | operating system of node      |
+| applications| String    | list of installed apps        |
 
-#### Product
-
-| Property    | Type      |                 Description   |
-| ------------| ----------|                -----------    |  
-| \_id        | String    | unique id for the product     |
-| ProdDesc    | String    | name and version of product   |
-
-#### Node_Product_Map
-
-| Property    | Type      |                 Description   |
-| ------------| ----------|                -----------    |  
-| \_id        | String    | unique id                     |
-| ProductId   | String    | unique id of the product      |
-| NodeId      | String    | unique id of the node         |
-
-#### Product_CVE_Map
-
-| Property    | Type      |                 Description   |
-| ------------| ----------|                -----------    |  
-| \_id        | String    | unique id                     |
-| ProductId   | String    | product name                  |
-| CVE_ID      | String    | vulnerability identification# |
-| CWE_ID      | String    | vulnerability Classification# |
-
-#### CWE_Master
+#### CyVID_CWE_Master
 
 | Property    | Type      |                 Description   |
 | ------------| ----------|                -----------    |  
 | \_id        | String    | unique id for CWE             |
-| CWEName     | String    | CWE name                      |
-| Parents     | List      | List of parents for the CWE   |
-| Children    | List      | List of children for the CWE  |
+| \_rev       | String    | revision # of the document    |
+| name        | String    | CWE name                      |
+| parents     | List      | List of parents for the CWE   |
+| children    | List      | List of children for the CWE  |
 
-#### CWE_Detailed
+#### CyVID_CWE_Combined
 
 | Property                  | Type        | Description   |
 | ------------              | ----------  | -----------   |  
 | \_id                      | String      | unique id     |
-| CWEName                   | String      | CWE name      |
+| \_rev                     | String      | revision # doc|
+| name                      | String      | CWE name      |
 | weakness_abstraction      | String      | CWE Details   |
-| Status                    | String      | CWE Details   |
+| status                    | String      | CWE Details   |
 | description               | String      | CWE Details   |
 | extended_description      | String      | CWE Details   |
 | related_weaknesses        | String      | CWE Details   |
@@ -137,12 +119,13 @@ The app is intended to provide information about the computer's at risk within a
 | Property                  | Type        | Description                                 |
 | ------------              | ----------  | -----------                                 |    
 | \_id                      | String      | unique id                                   |
+| \_rev                     | String      | revision # of the document                  |
 | lang                      | String      | Language                                    |
 | CWE_ID                    | String      | unique id                                   |
 | CWE_Description           | String      | Description                                 |
 | CWE_Platform              | String      | Platform                                    |
 | CWE_Af_Res                | String      | Affected Resources                          |
-| Severity                  | String      | Vulnerability Severity                      |
+| severity                  | String      | Vulnerability Severity                      |
 | CVSS_V2                   | String      | CVSS V2 Score                               |
 | CVSS_V3                   | String      | CVSS V3 Score                               |
 | Vul_Access_Vector         | String      | Vulnerability Access Vector                 |
@@ -154,41 +137,45 @@ The app is intended to provide information about the computer's at risk within a
 | description               | String      | CWE Details                                 |
 | url_and_tags              | List        | References                                  |
 
+#### CyVID_Users
+
+| Property                  | Type        | Description   |
+| ------------              | ----------  | -----------   |  
+| \_id                      | String      | unique id     |
+| \_rev                     | String      | revision # doc|
+| user                      | String      | CWE name      |
+| pass                      | String      | CWE Details   |
+
 ### Networking
+For the mobile app to interact with the backend, we built a custom API that runs on the same server as the database. The API is capable of receiving Add/Update/Delete/Query requests and perform the related operation on database and return status messages or data in response.  
 
-#### Node
-- (Read/GET) Query all nodes
-- (Add/Node) Add a new node profile
-- (Delete) Delete an existing node profile
-- (Update/PUT) Update a node profile
+#### CyVID_Node
+- (Read/GET) Query single node data - http://hostIP:port/CyVID_functions/query/cyvid_node/{"data":"Test 12"}
+- (Read/GET) Query all nodes data - http://hostIP:port/CyVID_functions/query/cyvid_node/{"all":"docs"} 
+- (Add/Node) Add a new node profile - http://hostIP:port/CyVID_functions/add/cyvid_node/{"HostName":"Mike's Computer", "HostIP":"192.168.1.184", "HostGateway": "192.168.1.1", "HostOS": "Microsoft Windows 10 Pro Build 12457"}
+- (Add/Node) Add node applications - http://hostIP:port/CyVID_functions/addapps/cyvid_node/{"_id":"0", "_rev": "20-d41f7f5748fd2c5e568a4d9272050bd0", "applications": "Test 6.0"}
+- (Update/Node) Update existing node - http://hostIP:port/CyVID_functions/update/cyvid_node/{"_id":"11", "_rev": "3-cf6bfa49a8a8665f7e90580b7dd85cba", , "data":"new value"}
+- (Delete/Node) Delete an existing node - http://hostIP:port/CyVID_functions/delete/cyvid_node/{"_id":"11", "_rev": "6-85c2acee6d155b7eeecfa0e05b627385"}
 
-#### Product
-- (Read/GET) Query all nodes
-- (Add/Node) Add a new product
-- (Delete) Delete an existing product
-- (Update/PUT) Update a product details
+#### CyVID_CWE_Master
+- This document store is updated through a python-based agent running on the server.
+- The API interacts with this database to fetch related information and feeds to the Android app.
 
-#### Node_Product_Map
-- (Read/GET) Query node/product mappings
-- (Add/Node) Add a new node/product mapping
-- (Delete) Delete an existing node/product mapping
-- (Update/PUT) Update a node/product mapping
-
-
-#### Product_CVE_Map
-- (Read/GET) Query product/CVE mappings
-- (Add/Node) Add a new product/CVE mapping
-- (Delete) Delete an existing product/CVE mapping
-- (Update/PUT) Update a product/CVE mapping
-
-#### CWE_Master
-- (Read/GET) Query CWE records
-
-#### CWE_Detailed
-- (Read/GET) Query CWE details
+#### CyVID_CWE_Combined
+- This document store is updated through a python-based agent running on the server.
+- The API interacts with this database to fetch related information and feeds to the Android app.
 
 #### CyVID_Dataset
-- (Read/GET) Query CyVID dataset for vulnerability details.
+- This document store is updated through a python-based agent running on the server.
+- The API interacts with this database to fetch related information and feeds to the Android app.
+
+#### CyVID_Users
+- (Read/GET) Query single user data - http://hostIP:port/CyVID_functions/query/cyvid_users/{"user":"sarah"}
+- (Read/GET) Query all users data - http://hostIP:port/CyVID_functions/query/cyvid_users/{"all":"docs"} 
+- (Add/Node) Add a new user profile - http://hostIP:port/CyVID_functions/add/cyvid_users/{"user":"John Albert", "pass":"john@123"}
+- (Update/User) Update existing user - http://hostIP:port/CyVID_functions/update/cyvid_users/{"_id":"11", "_rev": "3-cf6bfa49a8a8665f7e90580b7dd85cba", , "pass":"new value"}
+- (Delete/User) Delete an existing user - http://hostIP:port/CyVID_functions/delete/cyvid_users/{"_id":"11", "_rev": "6-85c2acee6d155b7eeecfa0e05b627385"}
+- (Authenticate/User) Authenticate user - http://hostIP:port/Authenticate/{"user":"admin", "pass":"password"}
 
 ## Video Walkthrough
 
