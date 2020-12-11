@@ -145,8 +145,8 @@ For the mobile app to interact with the backend database, we selected CouchDB (n
 | ------------              | ----------  | -----------   |  
 | \_id                      | String      | unique id     |
 | \_rev                     | String      | revision # doc|
-| user                      | String      | CWE name      |
-| pass                      | String      | CWE Details   |
+| user                      | String      | user name     |
+| pass                      | String      | user password |
 
 ## Networking
 For the mobile app to interact with the backend, we built a custom API that runs on the same server as the database. The API is capable of receiving Add/Update/Delete/Query requests and perform the related operation on database and return status messages or data in response.  
