@@ -6,7 +6,7 @@
 1. [Wireframes](#Wireframes)
 2. [Schema](#Schema)
 2. [Networking](#Networking)
-3. [Video Walkthrough](#Video Walkthrough)
+3. [Video Walkthrough](#Walkthrough)
 
 ## Overview
 ### Description
@@ -179,7 +179,7 @@ For the mobile app to interact with the backend, we built a custom API that runs
 - (Delete/User) Delete an existing user - http://hostIP:port/CyVID_functions/delete/cyvid_users/{"_id":"11", "_rev": "6-85c2acee6d155b7eeecfa0e05b627385"}
 - (Authenticate/User) Authenticate user - http://hostIP:port/Authenticate/{"user":"admin", "pass":"password"}
 
-## Video Walkthrough
+## Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
