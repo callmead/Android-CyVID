@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_dashboard"
-        android:icon="@drawable/ic_baseline_dashboard_24"
-        android:title="Dashboard"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/action_nodes"
         android:icon="@drawable/ic_baseline_list_24"
         android:title="Nodes"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_dashboard"
+        android:icon="@drawable/ic_baseline_dashboard_24"
+        android:title="Dashboard"
         app:showAsAction="always" />
 </menu>

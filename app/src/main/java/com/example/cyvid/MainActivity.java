@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Set default selection
-        navigationView.setSelectedItemId(R.id.action_dashboard);
+        navigationView.setSelectedItemId(R.id.action_nodes);
     }
 
 
