@@ -6,6 +6,7 @@
 1. [Wireframes](#Wireframes)
 2. [Schema](#Schema)
 2. [Networking](#Networking)
+3. [Video Walkthrough](#Video Walkthrough)
 
 ## Overview
 ### Description
