@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.cyvid.main_fragments.NodesFragment;
+import com.example.cyvid.model.Application;
 import com.example.cyvid.model.Node;
 
 import java.lang.reflect.Array;
@@ -36,7 +37,6 @@ public class AddApplication extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Add Application");
-
 
         appName = findViewById(R.id.et_application_name);
         appVersion = findViewById(R.id.et_appVersion);
@@ -64,20 +64,19 @@ public class AddApplication extends AppCompatActivity {
                 SharedPreferences bb = getSharedPreferences("sharedPrefs", 0);
 
                 String id = bb.getString("id", "");
-                final String doc = "{\"_id\":\"" + id + "\", \"applications\":\"" + appName.getText().toString() + " " + appVersion.getText().toString() +"\"}";
+                String rev = bb.getString("rev", "");
 
-                DataBase db = new DataBase();
+                final String doc = "{\"_id\":\"" + id + "\", \"_rev\": \"" + rev + "\", \"applications\": \"" + appName.getText().toString() + " " +
+                        appVersion.getText().toString() + "\"}";
+                Log.i("AddApplications", doc);
 
-                String test = "http://70.120.225.91:5000/CyVID_functions/add/" + db.db + "/" + id + "/" + doc;
-                Log.i("AddApplications", test);
-                new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/add/" + db.db + doc);
-
-                Log.i("AddApplications", id);
+                new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/addapps/cyvid_nodes/" + doc);
 
                 finish();
             }
         });
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

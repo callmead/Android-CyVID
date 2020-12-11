@@ -8,7 +8,7 @@ import java.util.List;
 public class Node {
 
     private String hostName, hostIP, hostGateway, hostOS, id, rev;
-    private List<Application> apps;
+    private List<String> apps;
 
     public String getHostName() {
         return hostName;
@@ -58,11 +58,11 @@ public class Node {
         this.rev = rev;
     }
 
-    public List<Application> getApps() {
-        return apps;
+    public void setApps(List<String> apps) {
+        this.apps = apps;
     }
 
-    public void addApp(Application app) {
-        apps.add(app);
+    public List<String> getApps() {
+        return apps;
     }
 }

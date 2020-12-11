@@ -3,13 +3,16 @@ package com.example.cyvid;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.cyvid.main_fragments.DashboardFragment;
 import com.example.cyvid.main_fragments.NodesFragment;
 
 public class AddNode extends AppCompatActivity {
@@ -48,23 +51,26 @@ public class AddNode extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                //Creating Background Threads
-                AsyncTask.execute(new Runnable() {
-                    @Override
-                    public void run() {
-                    }
-                });
-
-                DataBase db = new DataBase();
 
                 final String doc = "{\"HostName\":\"" + hostName.getText().toString() + "\", \"HostIP\": \""+ hostIP.getText().toString() +"\", \"HostGateway\": \""+ hostGateway.getText().toString() +"\", \"HostOS\": \""+ hostOS.getText().toString() +"\"}";
-                new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/add/test_db2/" + doc);
-                // .NotifyDataSetChanged();
-                NodesFragment.updateList();
+                new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/add/cyvid_nodes/" + doc);
 
-                finish();
+//                Tweet tweet = Tweet.fromJson(json.jsonObject);
+//                Log.i(TAG, "Published Tweet" + tweet.body);
+//                Intent intent = new Intent();
+//                intent.putExtra("tweet", Parcels.wrap(tweet));
+//                setResult(RESULT_OK, intent);
+//                finish();
+
+                goToDashboard();
             }
         });
+    }
+
+    private void goToDashboard() {
+        Intent i = new Intent(this, DashboardFragment.class);
+        startActivity(i);
+        finish();
     }
 
     @Override

@@ -3,17 +3,22 @@ package com.example.cyvid;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.cyvid.main_fragments.NodesFragment;
+
 public class EditActivity extends AppCompatActivity {
 
     EditText hostName, hostIP, hostGateway, hostOS;
     Button btnSave, btnCancel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,14 +73,19 @@ public class EditActivity extends AppCompatActivity {
         String id = bb.getString("id", "");
         String rev = bb.getString("rev", "");
 
-        String doc = "{\"_id\":\"" + id + "\", \"HostName\":\"" + hostName + "\", \"HostIP\":\"" + hostIP + "\", \"HostGateway\":\""
-                + hostGateway + "\", \"HostOS\":\"" + hostOS + "\", \"_rev\": \"" + rev + "\"}";
+        String doc = "{\"_id\":\"" + id + "\", \"HostName\":\"" + hostName.getText().toString() + "\", \"HostIP\":\"" + hostIP.getText().toString()
+                + "\", \"HostGateway\":\"" + hostGateway.getText().toString() + "\", \"HostOS\":\"" + hostOS.getText().toString() + "\", \"_rev\": \"" + rev + "\"}";
+        Log.i("EditActivity", doc);
 
-        new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/update/test_db/" + doc);
+        new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/update/cyvid_nodes/" + doc);
 
+        goToNodeFragment();
+    }
+
+    private void goToNodeFragment() {
+        Intent i = new Intent(this, NodesFragment.class);
+        startActivity(i);
         finish();
-
-        // http://70.120.225.91:5000/CyVID_functions/update/test_db/{"_id":"11", "data":"new value", "_rev": "3-cf6bfa49a8a8665f7e90580b7dd85cba"}
     }
 
     @Override

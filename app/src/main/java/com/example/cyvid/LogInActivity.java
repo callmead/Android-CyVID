@@ -112,7 +112,6 @@ public class LogInActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-
                             String message = response.getString("message");
                             Log.i("LogIn", message);
 
@@ -135,9 +134,7 @@ public class LogInActivity extends AppCompatActivity {
                 error.printStackTrace();
             }
         });
-
         requestQueue.add(request);
-
     }
 
     private void goMainActivity() {

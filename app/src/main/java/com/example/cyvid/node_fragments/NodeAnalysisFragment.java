@@ -1,62 +1,54 @@
 package com.example.cyvid.node_fragments;
 
+import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+import com.example.cyvid.Adapters.AnalysisAdapter;
+import com.example.cyvid.AsyncResponse;
+import com.example.cyvid.JsonTask;
+import com.example.cyvid.Adapters.NodesAdapter;
 import com.example.cyvid.R;
+import com.example.cyvid.model.Analysis;
+import com.example.cyvid.model.Node;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NodeAnalysisFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class NodeAnalysisFragment extends Fragment {
+import org.json.JSONException;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+
+public class NodeAnalysisFragment extends Fragment implements AsyncResponse {
+
+    JsonTask jsonTask = new JsonTask();
+    public static final String TAG = "NodesAnalysis";
+    private RecyclerView rvNodeAnalysis;
+    private AnalysisAdapter adapter;
+    public List<Analysis> allAnalyses;
+    ProgressDialog dialog;
 
     public NodeAnalysisFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NodeAnalysisFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NodeAnalysisFragment newInstance(String param1, String param2) {
-        NodeAnalysisFragment fragment = new NodeAnalysisFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -70,5 +62,51 @@ public class NodeAnalysisFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        dialog = ProgressDialog.show(getContext(), "Loading analysis", "Please wait...", true);
+
+        rvNodeAnalysis = view.findViewById(R.id.rvNodeAnalysis);
+        allAnalyses = new ArrayList<>();
+
+        adapter = new AnalysisAdapter(getContext(), allAnalyses);
+
+        rvNodeAnalysis.setAdapter(adapter);
+        rvNodeAnalysis.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        SharedPreferences bb = Objects.requireNonNull(getActivity()).getSharedPreferences("sharedPrefs", 0);
+        String hostIP = bb.getString("hostIP", "");
+
+        final String doc = "{\"HostIP\": \"" + hostIP + "\"}";
+
+        jsonTask.delegate = this;
+        jsonTask.execute("http://70.120.225.91:5000/CyVID_analysis/" + doc);
+    }
+
+    private void extractAnalyses(String analysis) {
+        String[] outputs = analysis.split("\\{");
+
+        String[] names = {"Severity of Vulnerabilities", "Top 10 CVEs (Vulnerabilities)", "Top 10 CWEs (Weaknesses)"};
+        int i = 0;
+        for (String s : outputs) {
+            String newStr = s.substring(0, s.length()-7);
+
+            Analysis nodeAnalysis = new Analysis();
+
+            nodeAnalysis.setAnalysis(newStr);
+            nodeAnalysis.setTitle(names[i]);
+            i++;
+
+            allAnalyses.add(nodeAnalysis);
+            adapter.notifyDataSetChanged();
+        }
+
+        dialog.dismiss();
+
+    }
+
+    @Override
+    public void processFinish(String output) {
+        output = output.substring(7, output.length()-2).replace("\\},", "").replace("\\}", "");
+
+        extractAnalyses(output);
     }
 }

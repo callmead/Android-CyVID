@@ -3,10 +3,10 @@ package com.example.cyvid.model;
 public class Application {
 
     private String appName, appVersion;
-    private Node node;
 
-    public Application(Node node) {
-        this.node = node;
+    public Application(String name, String version) {
+        this.appName = name;
+        this.appVersion = version;
     }
 
     public String getAppName() {
@@ -23,5 +23,10 @@ public class Application {
 
     public void setAppVersion(String appVersion) {
         this.appVersion = appVersion;
+    }
+
+    @Override
+    public String toString() {
+        return appName + " " + appVersion;
     }
 }

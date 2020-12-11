@@ -1,4 +1,4 @@
-package com.example.cyvid;
+package com.example.cyvid.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cyvid.ItemClickListener;
+import com.example.cyvid.NodeDetail;
+import com.example.cyvid.R;
 import com.example.cyvid.model.Node;
 
 import java.util.List;
@@ -30,15 +33,12 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder>{
     @NonNull
     @Override
     public NodesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_node, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        Node node = nodeList.get(position);
-
         holder.tvHostName.setText(nodeList.get(position).getHostName());
         holder.tvHostIP.setText(nodeList.get(position).getHostIP());
 
@@ -50,6 +50,12 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder>{
                 String hostIP = nodeList.get(position).getHostIP();
                 String hostGateway = nodeList.get(position).getHostGateway();
                 String hostOS = nodeList.get(position).getHostOS();
+                List<String> apps = nodeList.get(position).getApps();
+
+                String strApps = "";
+                for (String s : apps) {
+                    strApps += s + "\n";
+                }
 
                 Intent intent = new Intent(context, NodeDetail.class);
 
@@ -57,6 +63,7 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder>{
                 intent.putExtra("hostIP", hostIP);
                 intent.putExtra("hostGateway", hostGateway);
                 intent.putExtra("hostOS", hostOS);
+                intent.putExtra("apps", strApps);
 
                 String id = nodeList.get(position).getId();
                 String rev = nodeList.get(position).getRev();
@@ -68,7 +75,10 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder>{
 
         });
 
+    }
 
+    public List<Node> getNodeList() {
+        return nodeList;
     }
 
     private void saveData(String id, String rev, String hostName, String hostIP, String hostGateway, String hostOS) {
@@ -104,7 +114,7 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView tvHostName, tvHostIP, tvHostGateway, tvNodeOS;
+        TextView tvHostName, tvHostIP;
         ItemClickListener itemClickListener;
 
         public ViewHolder(@NonNull View itemView) {

@@ -64,17 +64,13 @@ public class NodeDetailFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_edit_node, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -106,17 +102,4 @@ public class NodeDetailFragment extends Fragment {
         tvHostOS.setText(hostOS);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_edit_node) {
-
-            Intent intent = new Intent(getActivity(), EditActivity.class);
-            startActivity(intent);
-
-            // http://70.120.225.91:5000/CyVID_functions/update/test_db/{"_id":"11", "data":"new value", "_rev": "3-cf6bfa49a8a8665f7e90580b7dd85cba"}
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
