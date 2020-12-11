@@ -134,6 +134,7 @@ For the mobile app to interact with the backend database, we selected CouchDB (n
 | user_int_req              | Boolean     | User Interaction Required                   |
 | OS                        | List        | Operating systems affected by Vulnerability |
 | SW                        | String      | Softwares affected by Vulnerability         |
+| Ports                     | String      | Potential ports that can be used            |
 | published_date            | Date        | Date of publication                         |
 | modified_date             | Date        | Modification Date                           |
 | description               | String      | CWE Details                                 |
