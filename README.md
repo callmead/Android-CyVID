@@ -173,8 +173,9 @@ For the mobile app to interact with the backend, we built a custom API that runs
 - (Read/GET) Query single user data - http://hostIP:port/CyVID_functions/query/cyvid_users/{"user":"sarah"}
 - (Read/GET) Query all users data - http://hostIP:port/CyVID_functions/query/cyvid_users/{"all":"docs"} 
 - (Add/Node) Add a new user profile - http://hostIP:port/CyVID_functions/add/cyvid_users/{"user":"John Albert", "pass":"john@123"}
-- (Update/Node) Update existing user - http://hostIP:port/CyVID_functions/update/cyvid_users/{"_id":"11", "_rev": "3-cf6bfa49a8a8665f7e90580b7dd85cba", , "pass":"new value"}
-- (Delete/Node) Delete an existing user - http://hostIP:port/CyVID_functions/delete/cyvid_users/{"_id":"11", "_rev": "6-85c2acee6d155b7eeecfa0e05b627385"}
+- (Update/User) Update existing user - http://hostIP:port/CyVID_functions/update/cyvid_users/{"_id":"11", "_rev": "3-cf6bfa49a8a8665f7e90580b7dd85cba", , "pass":"new value"}
+- (Delete/User) Delete an existing user - http://hostIP:port/CyVID_functions/delete/cyvid_users/{"_id":"11", "_rev": "6-85c2acee6d155b7eeecfa0e05b627385"}
+- (Authenticate/User) Authenticate user - http://hostIP:port/Authenticate/{"user":"admin", "pass":"password"}
 
 ## Video Walkthrough
 
