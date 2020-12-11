@@ -2,11 +2,11 @@
 
 ## Table of Contents
 1. [Overview](#Overview)
-1. [Product Spec](#Product-Spec)
+1. [Product Spec](#Product-Specifications)
 1. [Wireframes](#Wireframes)
 2. [Schema](#Schema)
 2. [Networking](#Networking)
-3. [Video Walkthrough](#Walkthrough)
+3. [Video Walkthrough](#Video-Walkthrough)
 
 ## Overview
 ### Description
@@ -20,7 +20,7 @@ The app is intended to provide information about the computer's at risk within a
 - **Habit:** This can be used periodically to gather current trends. 
 - **Scope:** First we start by providing network analysis and later can be used for preedicting future risks. 
 
-## Product Spec
+## Product Specifications
 
 ### 1. User Stories (Required and Optional)
 
@@ -179,7 +179,7 @@ For the mobile app to interact with the backend, we built a custom API that runs
 - (Delete/User) Delete an existing user - http://hostIP:port/CyVID_functions/delete/cyvid_users/{"_id":"11", "_rev": "6-85c2acee6d155b7eeecfa0e05b627385"}
 - (Authenticate/User) Authenticate user - http://hostIP:port/Authenticate/{"user":"admin", "pass":"password"}
 
-## Walkthrough
+## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
