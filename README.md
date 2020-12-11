@@ -147,7 +147,7 @@ For the mobile app to interact with the backend database, we selected CouchDB (n
 | user                      | String      | CWE name      |
 | pass                      | String      | CWE Details   |
 
-### Networking
+## Networking
 For the mobile app to interact with the backend, we built a custom API that runs on the same server as the database. The API is capable of receiving Add/Update/Delete/Query requests and perform the related operation on database and return status messages or data in response.  
 
 #### CyVID_Node
