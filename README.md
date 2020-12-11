@@ -4,9 +4,9 @@
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Specifications)
 1. [Wireframes](#Wireframes)
-2. [Schema](#Schema)
-2. [Networking](#Networking)
-3. [Video Walkthrough](#Video-Walkthrough)
+1. [Schema](#Schema)
+1. [Networking](#Networking)
+1. [Video Walkthrough](#Video-Walkthrough)
 
 ## Overview
 ### Description
