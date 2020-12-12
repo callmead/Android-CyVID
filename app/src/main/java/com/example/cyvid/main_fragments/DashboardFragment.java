@@ -112,7 +112,7 @@ public class DashboardFragment extends Fragment implements AsyncResponse {
         rvDashboard.setLayoutManager(new LinearLayoutManager(getContext()));
 
         jsonTask.delegate = this;
-
+        execute();
 
     }
 
