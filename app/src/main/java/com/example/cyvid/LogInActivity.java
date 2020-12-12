@@ -79,7 +79,7 @@ public class LogInActivity extends AppCompatActivity implements AsyncResponse {
                     Toast.makeText(LogInActivity.this, "Password cannot be empty.", Toast.LENGTH_SHORT).show();
                 } else {
                     signUp(username, password);
-                    Toast.makeText(LogInActivity.this, "User successfully signed up!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LogInActivity.this, "Sign up successful!", Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -17,7 +17,6 @@ public class JsonTask extends AsyncTask<String, String, String> {
 
     protected void onPreExecute() {
         super.onPreExecute();
-        //lblData.setText("Loading data, please wait");
     }
 
     protected String doInBackground(String... params) {

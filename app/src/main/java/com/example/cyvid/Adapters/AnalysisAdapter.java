@@ -36,10 +36,7 @@ public class AnalysisAdapter extends RecyclerView.Adapter<AnalysisAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvTitle.setText(analysisList.get(position).getTitle());
-        Log.i(TAG, analysisList.get(position).getTitle());
         holder.tvAnalysis.setText(analysisList.get(position).getAnalysis());
-        Log.i(TAG, analysisList.get(position).getAnalysis());
-
     }
 
     @Override

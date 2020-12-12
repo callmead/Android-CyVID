@@ -65,4 +65,20 @@ public class Node {
     public List<String> getApps() {
         return apps;
     }
+
+    public String appsToString() {
+        return apps.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "hostName='" + hostName + '\'' +
+                ", hostIP='" + hostIP + '\'' +
+                ", hostGateway='" + hostGateway + '\'' +
+                ", hostOS='" + hostOS + '\'' +
+                ", id='" + id + '\'' +
+                ", rev='" + rev + '\''+
+                '}';
+    }
 }

@@ -48,7 +48,6 @@ public class NodesFragment extends Fragment {
     private NodesAdapter adapter;
     public List<Node> allNodes;
     private RequestQueue requestQueue;
-    JsonTask jsonTask = new JsonTask();
 
     public NodesFragment() {
         // Required empty public constructor
@@ -99,6 +98,8 @@ public class NodesFragment extends Fragment {
         adapter.notifyDataSetChanged();
 
         requestQueue = Volley.newRequestQueue(Objects.requireNonNull(getContext()));
+        Log.i("NodesFragment", String.valueOf(requestQueue));
+
         parseJson();
     }
 

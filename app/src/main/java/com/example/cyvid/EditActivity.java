@@ -16,7 +16,7 @@ public class EditActivity extends AppCompatActivity implements AsyncResponse {
 
     EditText hostName, hostIP, hostGateway, hostOS;
     Button btnSave, btnCancel;
-
+    JsonTask jsonTask = new JsonTask();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,8 @@ public class EditActivity extends AppCompatActivity implements AsyncResponse {
 
         btnSave = findViewById(R.id.btn_saveNode);
         btnCancel = findViewById(R.id.btn_cancelNodeEdit);
+
+        jsonTask.delegate = this;
 
         SharedPreferences bb = getSharedPreferences("sharedPrefs", 0);
 
@@ -75,7 +77,7 @@ public class EditActivity extends AppCompatActivity implements AsyncResponse {
                 + "\", \"HostGateway\":\"" + hostGateway.getText().toString() + "\", \"HostOS\":\"" + hostOS.getText().toString() + "\", \"_rev\": \"" + rev + "\"}";
         Log.i("EditActivity", doc);
 
-        new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/update/cyvid_nodes/" + doc);
+        jsonTask.execute("http://70.120.225.91:5000/CyVID_functions/update/cyvid_nodes/" + doc);
 
     }
 

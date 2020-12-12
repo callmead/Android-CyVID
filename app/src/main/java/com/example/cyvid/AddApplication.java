@@ -27,6 +27,7 @@ public class AddApplication extends AppCompatActivity implements AsyncResponse {
     Button btnCancel;
     Button btnSave;
     EditText appName, appVersion;
+    JsonTask jsonTask = new JsonTask();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,8 @@ public class AddApplication extends AppCompatActivity implements AsyncResponse {
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Add Application");
+
+        jsonTask.delegate = this;
 
         appName = findViewById(R.id.et_application_name);
         appVersion = findViewById(R.id.et_appVersion);
@@ -70,7 +73,7 @@ public class AddApplication extends AppCompatActivity implements AsyncResponse {
                         appVersion.getText().toString() + "\"}";
                 Log.i("AddApplications", doc);
 
-                new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/addapps/cyvid_nodes/" + doc);
+                jsonTask.execute("http://70.120.225.91:5000/CyVID_functions/addapps/cyvid_nodes/" + doc);
 
             }
         });
@@ -89,6 +92,5 @@ public class AddApplication extends AppCompatActivity implements AsyncResponse {
     @Override
     public void processFinish(String output) {
         finish();
-
     }
 }

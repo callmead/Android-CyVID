@@ -20,6 +20,8 @@ public class AddNode extends AppCompatActivity implements AsyncResponse {
     private static final String TAG = "AddNode";
     Button btnSave, btnCancel;
     EditText hostName, hostIP, hostGateway, hostOS;
+    JsonTask jsonTask = new JsonTask();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class AddNode extends AppCompatActivity implements AsyncResponse {
         hostGateway = findViewById(R.id.et_hostGateway);
         hostOS = findViewById(R.id.et_hostOS);
 
+        jsonTask.delegate = this;
+
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,9 +56,8 @@ public class AddNode extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View v) {
 
-                final String doc = "{\"HostName\":\"" + hostName.getText().toString() + "\", \"HostIP\": \""+ hostIP.getText().toString() +"\", \"HostGateway\": \""+ hostGateway.getText().toString() +"\", \"HostOS\": \""+ hostOS.getText().toString() +"\"}";
-                new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/add/cyvid_nodes/" + doc);
-
+                String doc = "{\"HostName\":\"" + hostName.getText().toString() + "\", \"HostIP\": \""+ hostIP.getText().toString() +"\", \"HostGateway\": \""+ hostGateway.getText().toString() +"\", \"HostOS\": \""+ hostOS.getText().toString() +"\"}";
+                jsonTask.execute("http://70.120.225.91:5000/CyVID_functions/add/cyvid_nodes/" + doc);
             }
         });
     }
