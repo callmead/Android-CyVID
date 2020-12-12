@@ -70,7 +70,7 @@ public class NodesFragment extends Fragment {
         int id = item.getItemId();
         if (id == R.id.action_add_node) {
             Intent intent = new Intent(getActivity(), AddNode.class);
-            startActivityForResult(intent, REQUEST_CODE);
+            startActivity(intent);
             return true;
         }
 
