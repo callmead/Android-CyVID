@@ -186,6 +186,10 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/jannyr08/CyVID/blob/main/cyVID-s1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+#### Database
+
+<img src='https://github.com/jannyr08/CyVID/blob/main/images/CouchDB.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 #### Login Activity
 
 <img src='https://github.com/jannyr08/CyVID/blob/main/images/CyVID_Login.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
