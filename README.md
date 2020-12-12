@@ -186,4 +186,10 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/jannyr08/CyVID/blob/main/cyVID-s1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+#### Login Activity
+
+<img src='https://github.com/jannyr08/CyVID/blob/main/images/CyVID_Login.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+#### CyVID Analysis
+
+<img src='https://github.com/jannyr08/CyVID/blob/main/images/CyVID_Analysis.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
