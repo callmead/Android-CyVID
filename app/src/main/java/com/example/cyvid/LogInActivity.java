@@ -68,22 +68,18 @@ public class LogInActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goMainActivity();
+                Log.i(TAG, "onClick signup button");
+                String username = etUsername.getText().toString();
+                String password = etPassword.getText().toString();
+
+                if (username.isEmpty()) {
+                    Toast.makeText(LogInActivity.this, "Username cannot be empty.", Toast.LENGTH_SHORT).show();
+                } else if (password.isEmpty()) {
+                    Toast.makeText(LogInActivity.this, "Password cannot be empty.", Toast.LENGTH_SHORT).show();
+                } else {
+                    signUp(username, password);
+                }
             }
-//            @Override
-//            public void onClick(View v) {
-//                Log.i(TAG, "onClick signup button");
-//                String username = etUsername.getText().toString();
-//                String password = etPassword.getText().toString();
-//
-//                if (username.isEmpty()) {
-//                    Toast.makeText(LogInActivity.this, "Username cannot be empty.", Toast.LENGTH_SHORT).show();
-//                } else if (password.isEmpty()) {
-//                    Toast.makeText(LogInActivity.this, "Password cannot be empty.", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    signUp(username, password);
-//                }
-//            }
 
         });
     }

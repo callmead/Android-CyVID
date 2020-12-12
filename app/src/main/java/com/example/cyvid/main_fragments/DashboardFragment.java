@@ -116,7 +116,7 @@ public class DashboardFragment extends Fragment implements AsyncResponse {
 
     }
 
-    private void execute() {
+    public void execute() {
         jsonTask.execute("http://70.120.225.91:5000/CyVID_analysis/{\"all\":\"nodes\"}");
     }
 
