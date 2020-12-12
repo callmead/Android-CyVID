@@ -30,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
-                    case R.id.action_nodes:
-                        fragment = new NodesFragment();
-                        break;
                     case R.id.action_dashboard:
-                    default:
                         fragment = new DashboardFragment();
+                        break;
+                    case R.id.action_nodes:
+                    default:
+                        fragment = new NodesFragment();
                         break;
                 }
 

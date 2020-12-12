@@ -15,7 +15,7 @@ import android.widget.EditText;
 import com.example.cyvid.main_fragments.DashboardFragment;
 import com.example.cyvid.main_fragments.NodesFragment;
 
-public class AddNode extends AppCompatActivity {
+public class AddNode extends AppCompatActivity implements AsyncResponse {
 
     private static final String TAG = "AddNode";
     Button btnSave, btnCancel;
@@ -55,14 +55,6 @@ public class AddNode extends AppCompatActivity {
                 final String doc = "{\"HostName\":\"" + hostName.getText().toString() + "\", \"HostIP\": \""+ hostIP.getText().toString() +"\", \"HostGateway\": \""+ hostGateway.getText().toString() +"\", \"HostOS\": \""+ hostOS.getText().toString() +"\"}";
                 new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/add/cyvid_nodes/" + doc);
 
-//                Tweet tweet = Tweet.fromJson(json.jsonObject);
-//                Log.i(TAG, "Published Tweet" + tweet.body);
-//                Intent intent = new Intent();
-//                intent.putExtra("tweet", Parcels.wrap(tweet));
-//                setResult(RESULT_OK, intent);
-//                finish();
-
-                finish();
             }
         });
     }
@@ -76,4 +68,8 @@ public class AddNode extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void processFinish(String output) {
+        finish();
+    }
 }

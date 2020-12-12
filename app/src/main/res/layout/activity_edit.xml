@@ -18,10 +18,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:ems="10"
-            android:hint="Host Name"
+            android:hint="@string/host_name"
             android:inputType="textPersonName"
             android:padding="10dp"
-            android:textColorHint="#D73E3E3E" />
+            android:textColorHint="#D73E3E3E"
+            android:autofillHints="" />
     </com.google.android.material.textfield.TextInputLayout>
 
 

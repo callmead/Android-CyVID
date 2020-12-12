@@ -77,7 +77,7 @@ public class NodeAnalysisFragment extends Fragment implements AsyncResponse {
 
         final String doc = "{\"HostIP\": \"" + hostIP + "\"}";
 
-        jsonTask.delegate = this;
+        //jsonTask.delegate = this;
         jsonTask.execute("http://70.120.225.91:5000/CyVID_analysis/" + doc);
     }
 

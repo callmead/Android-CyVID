@@ -77,10 +77,6 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder>{
 
     }
 
-    public List<Node> getNodeList() {
-        return nodeList;
-    }
-
     private void saveData(String id, String rev, String hostName, String hostIP, String hostGateway, String hostOS) {
         SharedPreferences prefs = context.getSharedPreferences("sharedPrefs", MODE_PRIVATE);
         SharedPreferences.Editor edit = prefs.edit();
@@ -98,18 +94,6 @@ public class NodesAdapter extends RecyclerView.Adapter<NodesAdapter.ViewHolder>{
     @Override
     public int getItemCount() {
         return nodeList.size();
-    }
-
-    // Clean all elements of the recycler
-    public void clear() {
-        nodeList.clear();
-        notifyDataSetChanged();
-    }
-
-    // Add a list of items -- change to type used
-    public void addAll(List<Node> list) {
-        nodeList.addAll(list);
-        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

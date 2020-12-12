@@ -22,7 +22,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddApplication extends AppCompatActivity {
+public class AddApplication extends AppCompatActivity implements AsyncResponse {
 
     Button btnCancel;
     Button btnSave;
@@ -72,7 +72,6 @@ public class AddApplication extends AppCompatActivity {
 
                 new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/addapps/cyvid_nodes/" + doc);
 
-                finish();
             }
         });
     }
@@ -85,5 +84,11 @@ public class AddApplication extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void processFinish(String output) {
+        finish();
+
     }
 }

@@ -3,9 +3,6 @@ package com.example.cyvid;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -66,11 +63,7 @@ public class JsonTask extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        try {
-            delegate.processFinish(result);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        delegate.processFinish(result);
     }
 
 }

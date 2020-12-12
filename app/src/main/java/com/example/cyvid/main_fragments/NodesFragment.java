@@ -102,27 +102,6 @@ public class NodesFragment extends Fragment {
         parseJson();
     }
 
-    public List<Node> getAllNodes() {
-        return allNodes;
-    }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//
-//        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
-//            // Get data from the intent (tweet)
-//            Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
-//            // Update the RecyclerView with the tweet
-//            // Modify data source of tweets
-//            tweets.add(0, tweet);
-//            // Update the adapter
-//            adapter.notifyItemInserted(0);
-//            rvTweets.smoothScrollToPosition(0);
-//        }
-//        super.onActivityResult(requestCode, resultCode, data);
-//    }
-
-
     private void parseJson() {
         String url = "http://70.120.225.91:5000/CyVID_functions/query/cyvid_nodes/{\"all\":\"docs\"}";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,

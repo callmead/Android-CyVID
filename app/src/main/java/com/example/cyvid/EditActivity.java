@@ -12,9 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.cyvid.main_fragments.NodesFragment;
-
-public class EditActivity extends AppCompatActivity {
+public class EditActivity extends AppCompatActivity implements AsyncResponse {
 
     EditText hostName, hostIP, hostGateway, hostOS;
     Button btnSave, btnCancel;
@@ -79,13 +77,6 @@ public class EditActivity extends AppCompatActivity {
 
         new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/update/cyvid_nodes/" + doc);
 
-        finish();
-    }
-
-    private void goToNodeFragment() {
-        Intent i = new Intent(this, NodesFragment.class);
-        startActivity(i);
-        finish();
     }
 
     @Override
@@ -95,5 +86,10 @@ public class EditActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void processFinish(String output) {
+        finish();
     }
 }

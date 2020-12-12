@@ -41,11 +41,6 @@ public class DashboardFragment extends Fragment implements AsyncResponse {
     public List<Analysis> allDashboardAnalyses;
     ProgressDialog dialog;
 
-    private Button btnAddNode;
-    private TextView tvExtra1, tvExtra2;
-    private ImageView ivExtra;
-    private TextView tvWaiting;
-
     public DashboardFragment() {
         // Required empty public constructor
     }
@@ -65,40 +60,6 @@ public class DashboardFragment extends Fragment implements AsyncResponse {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-//        tvExtra1 = view.findViewById(R.id.tv_extra1);
-//        tvExtra2 = view.findViewById(R.id.tv_extra2);
-//        ivExtra = view.findViewById(R.id.iv_extra);
-//        btnAddNode = view.findViewById(R.id.btn_addNode);
-//
-//        tvExtra1.setVisibility(View.GONE);
-//        tvExtra2.setVisibility(View.GONE);
-//        ivExtra.setVisibility(View.GONE);
-//        btnAddNode.setVisibility(View.GONE);
-//
-//        if (allDashboardAnalyses == null) {
-//            tvExtra1.setVisibility(View.VISIBLE);
-//            tvExtra2.setVisibility(View.VISIBLE);
-//            ivExtra.setVisibility(View.VISIBLE);
-//            btnAddNode.setVisibility(View.VISIBLE);
-//            rvDashboard.setVisibility(View.INVISIBLE);
-//
-//            btnAddNode = view.findViewById(R.id.btn_addNode);
-//            btnAddNode.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(getActivity(), AddNode.class);
-//                    startActivity(intent);
-//                }
-//            });
-//        }
-
-        tvWaiting = view.findViewById(R.id.tv_waiting);
-        tvWaiting.setVisibility(View.INVISIBLE);
-
-//        while (allDashboardAnalyses == null) {
-//            tvWaiting.setVisibility(View.VISIBLE);
-//        }
 
         dialog = ProgressDialog.show(getContext(), "Loading analysis", "Please wait...", true);
 
@@ -121,7 +82,7 @@ public class DashboardFragment extends Fragment implements AsyncResponse {
     }
 
     @Override
-    public void processFinish(String output) throws JSONException {
+    public void processFinish(String output) {
         output = output.substring(7, output.length()-2).replace("\\},", "").replace("\\}", "");
 
         extractAnalyses(output);

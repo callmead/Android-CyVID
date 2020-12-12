@@ -24,7 +24,7 @@
         android:backgroundTintMode="add"
         android:cursorVisible="true"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/username"
         android:includeFontPadding="true"
         android:inputType="textPersonName"
         android:padding="10dp"
@@ -46,7 +46,7 @@
         android:backgroundTintMode="add"
         android:cursorVisible="true"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:includeFontPadding="true"
         android:inputType="textPassword"
         android:padding="10dp"
@@ -65,7 +65,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/login_button"
-        android:text="Log In"
+        android:text="@string/log_in"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
@@ -83,7 +83,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/signup_button"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="16sp" />
@@ -96,7 +96,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
-        app:srcCompat="@drawable/temp_logo3" />
+        app:srcCompat="@drawable/temp_logo3"
+        android:contentDescription="@string/todo" />
 
 
 </RelativeLayout>

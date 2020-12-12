@@ -30,7 +30,6 @@ public class NodeApplicationsFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         //setHasOptionsMenu(true);

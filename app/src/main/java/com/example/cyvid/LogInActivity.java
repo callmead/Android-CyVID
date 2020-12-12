@@ -30,7 +30,7 @@ import java.util.Objects;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
-public class LogInActivity extends AppCompatActivity {
+public class LogInActivity extends AppCompatActivity implements AsyncResponse {
 
     public static final String TAG = "LoginActivity";
     private EditText etUsername;
@@ -38,6 +38,8 @@ public class LogInActivity extends AppCompatActivity {
     private Button btnLogin;
     private Button btnSignup;
     private RequestQueue requestQueue;
+    JsonTask jsonTask = new JsonTask();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,6 @@ public class LogInActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(TAG, "onClick signup button");
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
 
@@ -78,6 +79,7 @@ public class LogInActivity extends AppCompatActivity {
                     Toast.makeText(LogInActivity.this, "Password cannot be empty.", Toast.LENGTH_SHORT).show();
                 } else {
                     signUp(username, password);
+                    Toast.makeText(LogInActivity.this, "User successfully signed up!", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -86,12 +88,9 @@ public class LogInActivity extends AppCompatActivity {
 
     private void signUp(String username, String password) {
 
+        jsonTask.delegate = this;
         final String doc = "{\"user\":\"" + username + "\", \"pass\": \""+ password +"\"}";
-        new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/add/cyvid_users/" + doc);
-
-        String test = "http://70.120.225.91:5000/CyVID_functions/add/cyvid_users/" + doc;
-        Log.i("LogIn", test);
-        goMainActivity();
+        jsonTask.execute("http://70.120.225.91:5000/CyVID_functions/add/cyvid_users/" + doc);
 
     }
 
@@ -139,4 +138,8 @@ public class LogInActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void processFinish(String output) {
+        goMainActivity();
+    }
 }
