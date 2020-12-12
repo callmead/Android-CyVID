@@ -2,9 +2,11 @@
 
 ## Table of Contents
 1. [Overview](#Overview)
-1. [Product Spec](#Product-Spec)
+1. [Product Spec](#Product-Specifications)
 1. [Wireframes](#Wireframes)
-2. [Schema](#Schema)
+1. [Schema](#Schema)
+1. [Networking](#Networking)
+1. [Video Walkthrough](#Video-Walkthrough)
 
 ## Overview
 ### Description
@@ -18,7 +20,7 @@ The app is intended to provide information about the computer's at risk within a
 - **Habit:** This can be used periodically to gather current trends. 
 - **Scope:** First we start by providing network analysis and later can be used for preedicting future risks. 
 
-## Product Spec
+## Product Specifications
 
 ### 1. User Stories (Required and Optional)
 
@@ -132,6 +134,7 @@ For the mobile app to interact with the backend database, we selected CouchDB (n
 | user_int_req              | Boolean     | User Interaction Required                   |
 | OS                        | List        | Operating systems affected by Vulnerability |
 | SW                        | String      | Softwares affected by Vulnerability         |
+| Ports                     | String      | Potential ports that can be used            |
 | published_date            | Date        | Date of publication                         |
 | modified_date             | Date        | Modification Date                           |
 | description               | String      | CWE Details                                 |
@@ -143,10 +146,10 @@ For the mobile app to interact with the backend database, we selected CouchDB (n
 | ------------              | ----------  | -----------   |  
 | \_id                      | String      | unique id     |
 | \_rev                     | String      | revision # doc|
-| user                      | String      | CWE name      |
-| pass                      | String      | CWE Details   |
+| user                      | String      | user name     |
+| pass                      | String      | user password |
 
-### Networking
+## Networking
 For the mobile app to interact with the backend, we built a custom API that runs on the same server as the database. The API is capable of receiving Add/Update/Delete/Query requests and perform the related operation on database and return status messages or data in response.  
 
 #### CyVID_Node
