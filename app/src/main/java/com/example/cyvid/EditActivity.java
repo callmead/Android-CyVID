@@ -79,7 +79,7 @@ public class EditActivity extends AppCompatActivity {
 
         new JsonTask().execute("http://70.120.225.91:5000/CyVID_functions/update/cyvid_nodes/" + doc);
 
-        goToNodeFragment();
+        finish();
     }
 
     private void goToNodeFragment() {

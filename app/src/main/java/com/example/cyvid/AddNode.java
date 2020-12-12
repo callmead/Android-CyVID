@@ -62,15 +62,9 @@ public class AddNode extends AppCompatActivity {
 //                setResult(RESULT_OK, intent);
 //                finish();
 
-                goToDashboard();
+                finish();
             }
         });
-    }
-
-    private void goToDashboard() {
-        Intent i = new Intent(this, DashboardFragment.class);
-        startActivity(i);
-        finish();
     }
 
     @Override
